@@ -1,0 +1,46 @@
+import React, {Component} from 'react';
+import {StyleSheet, View, Text, Image, Button} from 'react-native';
+import imgName from './abc.jpg';
+import Modal from 'react-native-modal';
+class App extends Component {
+  state = {
+    isModalVisible: false,
+  };
+
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+
+  render() {
+    return (
+      <View style={{flex: 1, backgroundColor: 'pink'}}>
+        <Button title="Open Modal " onPress={this.toggleModal} />
+        <Text>Very Good</Text>
+        <View style={{alignItems: 'center'}}>
+          <Modal isVisible={this.state.isModalVisible}>
+            <View
+              style={{
+                width: '100%',
+                height: 300,
+                borderRadius: 15,
+                backgroundColor: 'yellow',
+                alignItems: 'center',
+              }}>
+              <Text>This is Modal of React Native</Text>
+              <Button title="Close Modal " onPress={this.toggleModal} />
+              <Text> Very Nice</Text>
+            </View>
+          </Modal>
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  MainView: {
+    flex: 1,
+  },
+});
+
+export default App;
